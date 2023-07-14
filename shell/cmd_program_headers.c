@@ -3,7 +3,11 @@
 
 int program_cmd_exec(void *ctx, uint8_t argc, char **argv) {
     elf_ctx *elf = (elf_ctx *)ctx;
-    print_program_headers(elf->program_headers, elf->n_prog_hdrs);
+    if (argc == 0) {
+        print_program_headers(elf->program_headers, elf->n_prog_hdrs);
+        return 1;
+    }
+
     return 1;
 }
 
